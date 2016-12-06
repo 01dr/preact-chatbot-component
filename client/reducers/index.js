@@ -4,6 +4,6 @@
  */
 
 import objectAssign from 'object-assign';
-import test from './test';
+import chat from './chat';
 
-export default objectAssign({}, test);
+export default objectAssign({}, chat);

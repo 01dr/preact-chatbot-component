@@ -1,0 +1,1 @@
+export const TOGGLE_CHAT_WINDOW = 'TOGGLE_CHAT_WINDOW';

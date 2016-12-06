@@ -3,19 +3,17 @@
  * 14.11.16
  */
 
-// import { h } from 'preact'
+// import { h } from 'preact';
 //
-// import { createDevTools } from 'redux-devtools'
+// import { createDevTools } from 'redux-devtools';
 //
-// import LogMonitor from 'redux-devtools-log-monitor'
-// import DockMonitor from 'redux-devtools-dock-monitor'
+// import LogMonitor from 'redux-devtools-log-monitor';
+// import DockMonitor from 'redux-devtools-dock-monitor';
 //
-// const DevTools = createDevTools(
+// export default createDevTools(
 //     <DockMonitor toggleVisibilityKey='ctrl-h'
 //                  changePositionKey='ctrl-q'
 //                  defaultIsVisible={false}>
 //         <LogMonitor theme='tomorrow' />
 //     </DockMonitor>
 // );
-//
-// export default DevTools
