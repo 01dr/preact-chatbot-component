@@ -12,7 +12,8 @@ class Main extends Component {
 	render() {
 		return (
 			<div>
-				hello, world!
+				hello, world!<br/>
+				привет, мир!
 			</div>
 		);
 	}
