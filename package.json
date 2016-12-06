@@ -33,7 +33,7 @@
     "postcss-clearfix": "^1.0.0",
     "postcss-cssnext": "^2.8.0",
     "postcss-font-magician": "^1.5.0",
-    "postcss-loader": "^1.1.1",
+    "postcss-loader": "^1.2.0",
     "postcss-normalize": "^0.3.0",
     "precss": "^1.4.0",
     "react-css-modules": "^4.0.3",
@@ -52,6 +52,7 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2017": "^6.16.0",
     "normalize.css": "^5.0.0",
+    "postcss-import": "^9.0.0",
     "preact": "^6.4.0",
     "preact-redux": "^1.2.0",
     "react": "^15.4.1"

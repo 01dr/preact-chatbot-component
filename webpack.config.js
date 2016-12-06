@@ -8,6 +8,7 @@ const postCSSNext = require('postcss-cssnext');
 const postCSSClearfix = require('postcss-clearfix');
 const postCSSFonts = require('postcss-font-magician')(require('./fonts'));
 const postCSSPreCSS = require('precss');
+const postCSSImport = require('postcss-import');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -103,7 +104,7 @@ const resolve = {
 	extensions: ['', '.js', '.jsx'],
 	modules: [
 		path.resolve('./client'),
-		'node_modules'
+		path.resolve('./node_modules')
 	]
 };
 const devServer = { contentBase: './client' };
@@ -117,5 +118,5 @@ module.exports = {
 	module: { preLoaders, loaders },
 	resolve,
 	devServer,
-	postcss: () => [postCSSNext, postCSSPreCSS, postCSSClearfix, postCSSFonts]
+	postcss: () => [postCSSImport, postCSSNext, postCSSPreCSS, postCSSClearfix, postCSSFonts]
 };
