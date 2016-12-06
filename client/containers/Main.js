@@ -8,12 +8,13 @@ import { connect } from 'preact-redux';
 
 import './common/main.pcss';
 
+import StartButton from '../components/StartButton/StartButton.js';
+
 class Main extends Component {
 	render() {
 		return (
 			<div>
-				hello, world!<br/>
-				привет, мир!
+				<StartButton/>
 			</div>
 		);
 	}
