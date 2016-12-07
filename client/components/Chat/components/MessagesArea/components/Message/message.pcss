@@ -1,39 +1,56 @@
-.message {
-	border-radius: 5px;
-	background: #fff;
-	margin: 10px 20px;
-	padding: 7px;
-	position: relative;
+.wrapper {
+	display: flex;
+	width: calc(100% - 40px);
+	padding: 0 20px;
 
-	&.outgoing {
-		&:after {
-			content: '';
-			position: absolute;
-			width: 0;
-			height: 0;
-			right: -5px;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-			border-top: 5px solid transparent;
-			border-bottom: 5px solid transparent;
-			border-left: 5px solid #fff;
-		}
+	& > .avatar {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		flex-grow: 0;
+		top: 10px;
+		position: relative;
 	}
 
-	&.incoming {
-		&:before {
-			content: '';
-			position: absolute;
-			width: 0;
-			height: 0;
-			left: -5px;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-			border-top: 5px solid transparent;
-			border-bottom: 5px solid transparent;
-			border-right: 5px solid #fff;
+	& > .message {
+		border-radius: 5px;
+		background: #fff;
+		margin: 10px 20px;
+		padding: 7px;
+		position: relative;
+
+		&.outgoing {
+			margin-left: auto;
+		    margin-right: 0;
+		    max-width: 245px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				right: -5px;
+			    top: 10px;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-left: 5px solid #fff;
+			}
+		}
+
+		&.incoming {
+			margin-right: 0;
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				left: -5px;
+			    top: 10px;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-right: 5px solid #fff;
+			}
 		}
 	}
 }

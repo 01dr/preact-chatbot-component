@@ -12,7 +12,7 @@ class ChatHeader extends Component {
 				<div className={s.avatar}>
 					<img src={barney}/>
 				</div>
-				<div className={s.name}>Бробот</div>
+				<div className={s.name}>Барни</div>
 			</div>
 		);
 	}
