@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import s from './chat.pcss';
 
 import ChatHeader from './components/ChatHeader/ChatHeader.js';
+import ChatInput from './components/ChatInput/ChatInput.js';
 
 class Chat extends Component {
 	render() {
@@ -13,7 +14,10 @@ class Chat extends Component {
 
 		return (
 			<div className={ st({ chat: true, open }) }>
-				<ChatHeader/>
+				<div className={s.wrapper}>
+					<ChatHeader/>
+					<ChatInput/>
+				</div>
 			</div>
 		);
 	}
