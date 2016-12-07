@@ -71,7 +71,7 @@ const loaders = [
 		test: /\.pcss$/i,
 		loader: ExtractTextPlugin.extract({
 			notExtractLoader: 'style-loader',
-			loader: 'css?-minimize&modules&importLoaders=1&localIdentName=[name]_[local]__[hash:base26]!postcss'
+			loader: 'css?-minimize&modules&importLoaders=1&localIdentName=[name]_[local]__[hash:base64:5]!postcss'
 		})
 	},
 	{

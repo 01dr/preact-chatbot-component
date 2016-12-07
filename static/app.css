@@ -1,8 +1,8 @@
 @font-face {
-  font-family: "GT Walsheim";
+  font-family: Roboto;
   font-style: normal;
   font-weight: 400;
-  src: url(//46321.selcdn.ru/static_fonts/GTSectra/gt-walsheim-regular.eot?#) format("eot"),url(//46321.selcdn.ru/static_fonts/GTSectra/gt-walsheim-regular.woff) format("woff");
+  src: url(//46321.selcdn.ru/static_fonts/Roboto/roboto.woff2) format("woff2"),url(//46321.selcdn.ru/static_fonts/Roboto/roboto.woff) format("woff");
 }
 
 @font-face {
@@ -510,9 +510,154 @@ template {
 }
 
 body {
-  font-family: 'GT Walsheim';
+  font-family: 'Roboto';
   font-weight: 400;
-  color: #2d459e;
+  color: #131313;
   background: #fdfdfd;
-  font-size: 18px;
+  font-size: 14px;
+}
+.startButton_broBot__WkhdR {
+	position: fixed;
+	bottom: 40px;
+	right: 40px
+}
+.startButton_broBot__WkhdR > button {
+	position: relative;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+	-webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d
+}
+.startButton_broBot__WkhdR > button > .startButton_front__3PFLz, .startButton_broBot__WkhdR > button > .startButton_back__3gW3G {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+.startButton_broBot__WkhdR > button > .startButton_front__3PFLz {
+	background: url(c82721a5dfb1395229422a356bb7aa90.png) no-repeat 50%;
+	background-size: cover;
+	z-index: 2;
+	-webkit-transform: rotateY(0deg);
+	        transform: rotateY(0deg)
+}
+.startButton_broBot__WkhdR > button > .startButton_back__3gW3G {
+	background: url(9f56ae7426f5eeeda00729dc05c84885.png) no-repeat 50%;
+	background-size: 50%;
+	background-color: #276658;
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg)
+}
+.startButton_broBot__WkhdR > button.startButton_open__1Uw6t {
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg)
+}
+.startButton_broBot__WkhdR > button:hover {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23)
+}
+.startButton_broBot__WkhdR > button:active {
+	box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22)
+}
+.chat_chat__2ruRX {
+	position: absolute;
+	top: -530px;
+	left: -266px;
+    width: 350px;
+	height: 500px;
+	background: #eee;
+	border-radius: 5px;
+	z-index: -999;
+	opacity: 0;
+	-webkit-transform: scale(1.5);
+	        transform: scale(1.5);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+	-webkit-transition: .3s ease-out opacity, .3s ease-out transform;
+	transition: .3s ease-out opacity, .3s ease-out transform
+}
+.chat_chat__2ruRX.chat_open__13wu7 {
+	z-index: 999;
+	opacity: 1;
+	-webkit-transform: scale(1);
+	        transform: scale(1)
+}
+.chat_chat__2ruRX > .chat_wrapper__1fB3G {
+	position: relative;
+	height: 100%
+}
+.chatHeader_header__2n889 {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	padding: 20px;
+	background: #276658;
+	border-radius: 5px 5px 0 0
+}
+.chatHeader_header__2n889 > .chatHeader_avatar__PWlNu {
+	width: 40px;
+	height: 40px;
+	margin: 0 20px 0 0
+}
+.chatHeader_header__2n889 > .chatHeader_avatar__PWlNu > img {
+	width: 100%;
+	border-radius: 50%
+}
+.chatHeader_header__2n889 > .chatHeader_name__Nf7cY {
+	font-size: 1.5em;
+	color: #fff
+}
+.messagesArea_area__3VeXz {
+	background: #ссс;
+	width: 100%;
+	height: calc(100% - 80px - 45px); /* 100% - header - input height */
+}
+.chatInput_input__1nWp6 {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+    padding: 10px 20px;
+	height: 25px;
+	background: #f0f3f5;
+	position: absolute;
+    width: calc(100% - 40px);
+    bottom: 0;
+	border-radius: 0 0 5px 5px
+}
+.chatInput_input__1nWp6 > input {
+	-ms-flex-preferred-size: 100%;
+	    flex-basis: 100%;
+	border: none;
+	outline: none;
+	background: transparent
+}
+.chatInput_input__1nWp6 > button {
+	-ms-flex-preferred-size: 30px;
+	    flex-basis: 30px;
+	background: transparent;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	padding: 0
 }
