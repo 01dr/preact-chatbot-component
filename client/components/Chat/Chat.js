@@ -17,7 +17,8 @@ class Chat extends Component {
 		super(props, context);
 
 		this.state = {
-			question: this.props.question || ''
+			question: this.props.question || '',
+			messages: []
 		};
 	}
 
@@ -30,15 +31,23 @@ class Chat extends Component {
 
 		socket.on('hello event', data => {
 			console.log(data.msg);
+			this.appendMessage({ type: 'incoming', text: data.msg });
 		});
 
 		socket.on('answer event', data => {
 			console.log(data.answer);
+			this.appendMessage({ type: 'incoming', text: data.answer });
 		});
 	}
 
 	handleQuestionChange(e) {
 		this.setState({ question: e.target.value });
+	}
+
+	appendMessage(message) {
+		const messages = this.state.messages;
+		messages.push(message);
+		this.setState({ messages });
 	}
 
 	handleSubmit(e) {
@@ -49,14 +58,17 @@ class Chat extends Component {
 			console.error('Socket dead');
 		} else {
 			socket.emit('question event', { question });
+			this.appendMessage({ type: 'outgoing', text: question });
 			this.setState({ question: '' });
 		}
 	}
 
 	render() {
 		const { dispatch, open } = this.props;
-		const { question } = this.state;
+		const { question, messages } = this.state;
 		const st = classNames.bind(s);
+
+		console.log(messages);
 
 		return (
 			<div className={ st({ chat: true, open }) }>
@@ -70,6 +82,7 @@ class Chat extends Component {
 
 					<div className={s.area}>
 						<div className={s.inner}>
+							{/*
 							<Message
 								type='incoming'
 								text='Hola, mundo!'
@@ -79,26 +92,18 @@ class Chat extends Component {
 								type='outgoing'
 								text='Привет, мир!'
 							/>
+ 							*/}
 
-							<Message
-								type='incoming'
-								text='Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.."'
-							/>
+							{
+								messages.map((message, i) => (
+									<Message
+										key={i}
+										type={message.type}
+										text={message.text}
+									/>
+								))
+							}
 
-							<Message
-								type='outgoing'
-								text='Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.'
-							/>
-
-							<Message
-								type='incoming'
-								text='Hola, mundo!'
-							/>
-
-							<Message
-								type='outgoing'
-								text='Привет, мир!'
-							/>
 						</div>
 					</div>
 
