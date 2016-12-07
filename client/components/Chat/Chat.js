@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
+import io from 'socket.io-client';
 
 import classNames from 'classnames/bind';
 import s from './chat.pcss';
@@ -9,28 +10,52 @@ import Message from './components/Message/Message.js';
 import barney from './images/barney.png';
 import sendIcon from './images/sendIcon.png';
 
+let socket;
+
 class Chat extends Component {
 	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
-			message: this.props.message || ''
+			question: this.props.question || ''
 		};
 	}
 
-	handleMessageChange(e) {
-		this.setState({ message: e.target.value });
+	componentDidMount() {
+		socket = io.connect('http://stdio.digital:3334', { reconnect: true });
+
+		socket.on('connect', () => {
+			console.info('[io connected]');
+		});
+
+		socket.on('hello event', data => {
+			console.log(data.msg);
+		});
+
+		socket.on('answer event', data => {
+			console.log(data.answer);
+		});
+	}
+
+	handleQuestionChange(e) {
+		this.setState({ question: e.target.value });
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this.state.message);
-		this.setState({ message: '' });
+		const { question } = this.state;
+
+		if (!socket) {
+			console.error('Socket dead');
+		} else {
+			socket.emit('question event', { question });
+			this.setState({ question: '' });
+		}
 	}
 
 	render() {
 		const { dispatch, open } = this.props;
-		const { message } = this.state;
+		const { question } = this.state;
 		const st = classNames.bind(s);
 
 		return (
@@ -83,8 +108,8 @@ class Chat extends Component {
 						<input
 							type='text'
 							placeholder='Пишите здесь'
-							value={message}
-							onChange={::this.handleMessageChange}/>
+							value={question}
+							onChange={::this.handleQuestionChange}/>
 						<button type='submit'>
 							<img src={sendIcon}/>
 						</button>
