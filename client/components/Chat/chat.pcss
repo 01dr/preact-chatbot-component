@@ -1,7 +1,7 @@
 .chat {
 	position: absolute;
 	top: -530px;
-	left: -266px;
+	left: 999px;
     width: 350px;
 	height: 500px;
 	background: #eee;
@@ -9,10 +9,11 @@
 	z-index: -999;
 	opacity: 0;
 	transform: scale(1.5);
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 	transition: .3s ease-out opacity, .3s ease-out transform;
 
 	&.open {
+		left: -266px;
 		z-index: 999;
 		opacity: 1;
 		transform: scale(1);
@@ -21,5 +22,71 @@
 	& > .wrapper {
 		position: relative;
 		height: 100%;
+
+		& > .header {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding: 20px;
+			background: #276658;
+			border-radius: 5px 5px 0 0;
+
+			& > .avatar {
+				width: 40px;
+				height: 40px;
+				margin: 0 20px 0 0;
+
+				& > img {
+					width: 100%;
+					border-radius: 50%;
+				}
+			}
+
+			& > .name {
+			    font-size: 1.5em;
+				color: #fff;
+			}
+		}
+
+		& > .area {
+			background: #ссс;
+			width: 100%;
+			height: calc(100% - 80px - 45px); /* 100% - header - input height */
+			overflow: auto;
+
+			& > .inner {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+
+		& > .input {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		    padding: 10px 20px;
+			height: 25px;
+			background: #f0f3f5;
+			position: absolute;
+		    width: calc(100% - 40px);
+		    bottom: 0;
+			border-radius: 0 0 5px 5px;
+
+			& > input {
+				flex-basis: 100%;
+				border: none;
+				outline: none;
+				background: transparent;
+			}
+
+			& > button {
+				flex-basis: 30px;
+				background: transparent;
+				cursor: pointer;
+				outline: none;
+				border: none;
+				padding: 0;
+			}
+		}
 	}
 }
