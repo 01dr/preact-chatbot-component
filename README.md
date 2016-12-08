@@ -1,13 +1,11 @@
-# anabolic
-React static app starter kit
-
-For universal \ isomorphic application we created [post3ree-boilerplate](https://github.com/hex22a/post3ree-boilerplate). Check this out!
+# Chatbot component
 
 ## Stack:
 * Webpack 2
-* React
-* React-Router 4
+* Preact
+* Socket.IO
 * Redux
+* PostCSS
 * Babel
 
 ## Commands:
