@@ -1,5 +1,12 @@
 # Chatbot component
 
+## Demo
+[LINK](http://46321.selcdn.ru/chatbot-demo/index.html)
+
+Landing page is a background only. Click on Barney to open a chat. Backend app now support only russian.
+
+try: `кяввм желтый зонт`
+
 ## Stack:
 * Webpack 2
 * Preact
