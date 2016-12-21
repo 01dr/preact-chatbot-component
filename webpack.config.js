@@ -105,11 +105,7 @@ const resolve = {
 	modules: [
 		path.resolve('./client'),
 		path.resolve('./node_modules')
-	],
-	alias: {
-		'react': 'preact-compat',
-		'react-dom': 'preact-compat'
-	}
+	]
 };
 const devServer = { contentBase: './client' };
 

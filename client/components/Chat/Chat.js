@@ -67,7 +67,7 @@ class Chat extends Component {
 	}
 
 	render() {
-		const { dispatch, open } = this.props;
+		const { open } = this.props;
 		const { question, messages } = this.state;
 		const st = classNames.bind(s);
 
@@ -78,7 +78,7 @@ class Chat extends Component {
 						<div className={s.avatar}>
 							<img src={barney}/>
 						</div>
-						<div className={s.name}>Барни</div>
+						<div className={s.name}>Бробот</div>
 					</div>
 
 					<div className={s.area}>
