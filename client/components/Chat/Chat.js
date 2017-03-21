@@ -8,7 +8,8 @@ import s from './chat.pcss';
 
 import Message from './components/Message/Message.js';
 
-import barney from './images/barney.png';
+import barneyAvatar from './images/barney.png';
+import adminAvatar from './images/admin.png';
 import sendIcon from './images/sendIcon.png';
 
 let socket;
@@ -19,6 +20,7 @@ class Chat extends Component {
 
 		this.state = {
 			question: this.props.question || '',
+            admin: false,
 			messages: []
 		};
 	}
@@ -31,12 +33,24 @@ class Chat extends Component {
 		});
 
 		socket.on('hello event', data => {
-			this.appendMessage({ type: 'incoming', text: data.msg });
+			this.appendMessage({ type: 'incoming', author: 'bot', text: data.msg });
 		});
 
 		socket.on('answer event', data => {
-			this.appendMessage({ type: 'incoming', text: data.answer });
+			this.appendMessage({ type: 'incoming', author: 'bot', text: data.answer });
 		});
+
+		socket.on('admin connected', () => {
+		    this.setState({ admin: true });
+        });
+
+		socket.on('admin disconnected', () => {
+		    this.setState({ admin: false });
+        });
+
+		socket.on('admin message', data => {
+		    this.appendMessage({ type: 'incoming', author: 'admin', text: data.message });
+        });
 	}
 
 	handleQuestionChange(e) {
@@ -57,7 +71,7 @@ class Chat extends Component {
 			console.error('Socket dead');
 		} else {
 			socket.emit('question event', { question });
-			this.appendMessage({ type: 'outgoing', text: question });
+			this.appendMessage({ type: 'outgoing', author: 'user', text: question });
 			this.setState({ question: '' });
 		}
 	}
@@ -68,7 +82,7 @@ class Chat extends Component {
 
 	render() {
 		const { open } = this.props;
-		const { question, messages } = this.state;
+		const { question, admin, messages } = this.state;
 		const st = classNames.bind(s);
 
 		return (
@@ -76,9 +90,9 @@ class Chat extends Component {
 				<div className={s.wrapper}>
 					<div className={s.header}>
 						<div className={s.avatar}>
-							<img src={barney}/>
+							<img src={admin ? adminAvatar : barneyAvatar}/>
 						</div>
-						<div className={s.name}>Бробот</div>
+						<div className={s.name}>{admin ? 'Бродмин' : 'Бробот'}</div>
 					</div>
 
 					<div className={s.area}>
@@ -87,6 +101,7 @@ class Chat extends Component {
 								<Message
 									key={i}
 									type={message.type}
+                                    author={message.author}
 									text={message.text}
 								/>
 							))}
